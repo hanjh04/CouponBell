@@ -5,7 +5,7 @@
 //  Created by NEXT on 2017. 2. 8..
 //  Copyright © 2017년 BoostCamp. All rights reserved.
 //
-import Foundation
+
 import UIKit
 
 class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDelegate, StreamDelegate {
@@ -14,16 +14,16 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
     var browser: NetServiceBrowser!
     var host:String?
     var port:Int?
-//    var socketPort:
     @IBOutlet weak var connectStateLabel: UILabel!
     @IBOutlet weak var msgLabel: UILabel!
-
+    
     var inputStream: InputStream?
     var outputStream: OutputStream?
 
-    var inoutStreams = (UIApplication.shared.delegate as! AppDelegate).inoutStreams
-
     let socket : Socket? = Socket()
+//    var socketPort: SocketPort?
+    
+    var inoutStreams = (UIApplication.shared.delegate as! AppDelegate).inoutStreams
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,20 +40,22 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
     // Publish Service
     @IBAction func publishBtn(_ sender: Any) {
         print(UIDevice.current.name)
-        
-        self.inoutStreams.append(InOutStream(server: NetService.init(domain: "local", type: "_test._tcp", name: UIDevice.current.name, port: 3000)))
-        self.inoutStreams.last?.server.includesPeerToPeer = true
-        self.inoutStreams.last?.server.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
-        self.inoutStreams.last?.server.delegate = self
-        self.inoutStreams.last?.server.publish(options: .listenForConnections)
-        
-//        server = NetService.init(domain: "local", type: "_test._tcp", name: UIDevice.current.name, port: 3000)
-//        server.includesPeerToPeer = true
-//        server.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
-//        server.delegate = self
-//        server.publish(options: .listenForConnections)
+        server = NetService.init(domain: "local", type: "_test._tcp", name: UIDevice.current.name, port: 3000)
+        server.includesPeerToPeer = true
+        server.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
+        server.delegate = self
+        server.publish(options: .listenForConnections)
         
         
+        ///////////////////////
+        ///서버 유지를 위해 시도중///
+        ///////////////////////
+        self.inoutStreams.append(InOutStream(service: self.server))
+        //앞에서 설정함!
+//        self.inoutStreams.last?.server.includesPeerToPeer = true
+//        self.inoutStreams.last?.server.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
+//        self.inoutStreams.last?.server.delegate = self
+//        self.inoutStreams.last?.server.publish(options: .listenForConnections)
     }
     
     // Scan Service
@@ -74,12 +76,8 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
     @IBAction func disConnectBtn(_ sender: Any) {
     }
     
-    @IBAction func sendMsgServerToClientBtn(_ sender: Any) {
-    }
-
-    @IBAction func sendMsgClientToServerBtn(_ sender: Any) {
-        
-        sendMsgClientToServer(msg: "ABCD")
+    @IBAction func sendBtn(_ sender: Any) {
+        sendMessage(msg: "ABCD")
     }
     
     @IBAction func receiveBtn(_ sender: Any) {
@@ -208,36 +206,13 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
         outputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         inputStream.open()
         outputStream.open()
-            
-//        socketPort = socketPort.init(tcpPort: UInt16(sender.port))
-//        print(socketPort)
-        
-        
-//        print(sender.addresses!)
-//        print(port)
-//        self.initSocketForServer(self.getIPV4StringfromAddress(sender.addresses!) as CFString, port: UInt32(sender.port), socket: (inoutStreams.last?.socket)!)
-        
-        socket?.inputStream = inputStream
-        socket?.outputStream = outputStream
-        
-        self.inoutStreams.last?.clientName = sender.name
-        self.inoutStreams.last?.socket.setInOutStream(inputStream: inputStream, outputStream: outputStream)
-//        self.inoutStreams.last?.inputStream = inputStream
-//        self.inoutStreams.last?.outputStream = outputStream
         
 //        socket?.inputStream = inputStream
 //        socket?.outputStream = outputStream
-        
-        
-        socket?.inputStream = inputStream
-        socket?.outputStream = outputStream
-        
-        (UIApplication.shared.delegate as! AppDelegate).inoutStreams.append(InOutStream(inputStream: inputStream, outputStream: outputStream, clientName: sender.name))
-        socket?.inputStream = inputStream
-        socket?.outputStream = outputStream
-        
-        (UIApplication.shared.delegate as! AppDelegate).inoutStreams.append(InOutStream(inputStream: inputStream, outputStream: outputStream, clientName: sender.name))
-        
+//        SocketPort(tcpPort: <#T##UInt16#>)
+//        socketPort = SocketPort(tcpPort: UInt16(sender.port))
+//        initSocketCommunication()
+//        inoutStreams.last?.socket?.initSocketCommunication(socket: (socketPort?.socket)!)
     }
     
     func netServiceDidStop(_ sender: NetService) {
@@ -292,7 +267,7 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
 
     //send message
     
-    func sendMsgClientToServer(msg: String){
+    func sendMessage(msg: String){
         guard let outputStream = socket?.getOutputStream() else {
             print("Connection not create yet ! =====> Return")
             return
@@ -300,6 +275,7 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
         let data = msg.data(using: String.Encoding.utf8)
         outputStream.open()
         
+        let result = data?.withUnsafeBytes { outputStream.write($0, maxLength: (data?.count)!) }
         
         if result == 0 {
             print("Stream at capacity")
@@ -308,39 +284,6 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
         } else {
             print("The number of bytes written is \(result)")
         }
-
-    }
-    
-    func sendMsgServerToClient(msg: String){
-        guard let outputStream = self.inoutStreams.last?.socket.getOutputStream() else {
-            print("Connection not create yet ! =====> Return")
-            return
-        }
-        let data2 = msg.data(using: String.Encoding.utf8)
-        (UIApplication.shared.delegate as! AppDelegate).inoutStreams[0].outputStream.open()
-        
-        
-        let result = data?.withUnsafeBytes { outputStream.write($0, maxLength: (data?.count)!) }
-        
-        let result2 = data?.withUnsafeBytes{ (UIApplication.shared.delegate as! AppDelegate).inoutStreams[0].outputStream.write($0, maxLength: (data?.count)!)}
-
-        
-//        if result == 0 {
-//            print("Stream at capacity")
-//        } else if result == -1 {
-//            print("Operation failed: \(outputStream.streamError)")
-//        } else {
-//            print("The number of bytes written is \(result)")
-//        }
-        
-        if result2 == 0 {
-            print("Stream at capacity")
-        } else if result2 == -1 {
-            print("Operation failed: \(outputStream.streamError)")
-        } else {
-            print("The number of bytes written is \(result)")
-        }
-
     }
 }
 

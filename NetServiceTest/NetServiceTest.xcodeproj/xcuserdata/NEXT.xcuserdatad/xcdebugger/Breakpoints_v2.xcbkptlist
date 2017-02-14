@@ -10,21 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NetServiceTest/ViewController.swift"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            timestampString = "508613411.73612"
+            timestampString = "508686211.007715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426">
-=======
-            timestampString = "508571817.438069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366">
->>>>>>> parent of 815fa8e... 기
+            startingLineNumber = "362"
+            endingLineNumber = "362">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,26 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NetServiceTest/ViewController.swift"
-<<<<<<< HEAD
-            timestampString = "508613411.73612"
+            timestampString = "508686211.007715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "438"
-            endingLineNumber = "438">
-=======
-            timestampString = "508571817.438069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378">
->>>>>>> parent of 815fa8e... 기
-=======
-            timestampString = "508571817.438069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366">
->>>>>>> parent of 815fa8e... 기
+            startingLineNumber = "374"
+            endingLineNumber = "374">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,36 +38,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NetServiceTest/ViewController.swift"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            timestampString = "508613411.73612"
+            timestampString = "508686211.007715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
-            landmarkName = "sendMsgServerToClient(msg:)"
-=======
-            timestampString = "508571733.389358"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
             landmarkName = "sendMessage(msg:)"
             landmarkType = "7">
-=======
-            timestampString = "508571817.438069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378">
->>>>>>> parent of 815fa8e... 기
-=======
-            timestampString = "508571817.438069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "366"
-            endingLineNumber = "366">
->>>>>>> parent of 815fa8e... 기
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -102,13 +54,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NetServiceTest/ViewController.swift"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            timestampString = "508518044.944227"
+            timestampString = "508686211.007715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "publishBtn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -116,99 +66,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NetServiceTest/ViewController.swift"
-            timestampString = "508571758.431034"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-=======
-            timestampString = "508571733.389358"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "sendMessage(msg:)"
-            landmarkType = "7">
-=======
-            timestampString = "508571817.438069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378">
->>>>>>> parent of 815fa8e... 기
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NetServiceTest/ViewController.swift"
-<<<<<<< HEAD
-            timestampString = "508518044.944227"
+            timestampString = "508686211.007715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "publishBtn(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NetServiceTest/ViewController.swift"
-            timestampString = "508571758.431034"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
->>>>>>> parent of 815fa8e... 기
-=======
-            timestampString = "508571733.389358"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "sendMessage(msg:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NetServiceTest/ViewController.swift"
-            timestampString = "508518044.944227"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "publishBtn(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NetServiceTest/ViewController.swift"
-            timestampString = "508571758.431034"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
->>>>>>> parent of 815fa8e... 기
-            startingLineNumber = "272"
-            endingLineNumber = "272"
-            landmarkName = "sendMessage(msg:)"
->>>>>>> parent of 815fa8e... 기
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "netService(_:didAcceptConnectionWith:outputStream:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

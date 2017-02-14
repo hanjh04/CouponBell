@@ -15,6 +15,7 @@ enum SocketState : Int {
     case errorOccurred = 3
     
 }
+
 class Socket: NSObject {
     
     var inputStream  : InputStream?
@@ -42,35 +43,31 @@ class Socket: NSObject {
             
             self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
             self.outputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            
             self.inputStream?.open()
             self.outputStream?.open()
         }
     }
     
-    
-    func setInOutStream(inputStream: InputStream, outputStream: OutputStream){
-        self.inputStream = inputStream
-        self.outputStream = outputStream
+    func initSocketCommunication(socket: CFSocketNativeHandle){
+        var readStream : Unmanaged<CFReadStream>?
+        var writeStream : Unmanaged<CFWriteStream>?
+
+        CFStreamCreatePairWithSocket(kCFAllocatorDefault, socket, &readStream, &writeStream)
+        
+        self.inputStream = readStream!.takeRetainedValue()
+        self.outputStream = writeStream!.takeRetainedValue()
         
         self.inputStream?.delegate = self
         self.outputStream?.delegate = self
         
         self.inputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         self.outputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        
         self.inputStream?.open()
         self.outputStream?.open()
     }
     
-    func initSockerCommunicationForServer(host:CFString , port : UInt32 , inputStream : InputStream , outputStream : OutputStream ){
-//        print()
-//        print("initSockerCommunicationForServer is called")
-//        DispatchQueue.global().async {
-//            var readstream : Unmanaged<CFReadStream>?
-//            var writestream : Unmanaged<CFWriteStream>?
-//            CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, host, port, &inputStream, &writestream)
-//            func CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, string, port, &readStream, &writestream)
-//        }
-    }
     
     func setStreamDelegate(_ delegete:StreamDelegate){
         print()
@@ -79,11 +76,13 @@ class Socket: NSObject {
     }
     
     func getInputStream() -> InputStream{
+        print()
         print("getInputStream is called")
         return self.inputStream!
     }
     
     func getOutputStream() -> OutputStream {
+        print()
         print("getoutputstream is called")
         return self.outputStream!
     }
