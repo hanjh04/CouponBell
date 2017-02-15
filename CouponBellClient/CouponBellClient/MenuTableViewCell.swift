@@ -19,10 +19,11 @@ class MenuTableViewCell: UITableViewCell{
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     
-    var isFirstSelected = true
+    var isFirstSelected = false
     var count = 0
     var index: Int?
     var menu: Menu?
+    var menus = (UIApplication.shared.delegate as! AppDelegate).menus
     
     @IBAction func plusBtn(_ sender: Any) {
 
@@ -30,8 +31,9 @@ class MenuTableViewCell: UITableViewCell{
         countLabel.text = String(count)
         
         updateTotalPrice()
-        
-        menu?.set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)
+        menu = menus[index!]
+        menu?.set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)	
+//        menu?.set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)
 
     }
     @IBAction func minusBtn(_ sender: Any) {

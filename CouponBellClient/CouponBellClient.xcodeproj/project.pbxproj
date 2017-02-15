@@ -18,6 +18,12 @@
 		586524371E5192FF00E3E79C /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586524361E5192FF00E3E79C /* CartTableViewCell.swift */; };
 		586524391E51950F00E3E79C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586524381E51950F00E3E79C /* MenuTableViewController.swift */; };
 		5865243B1E51955500E3E79C /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865243A1E51955500E3E79C /* MenuTableViewCell.swift */; };
+		58C1A79B1E540E4B00B64413 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A7991E540E4B00B64413 /* RealmSwift.framework */; };
+		58C1A79C1E540E4B00B64413 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; };
+		58C1A79D1E540E7900B64413 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A7991E540E4B00B64413 /* RealmSwift.framework */; };
+		58C1A79E1E540E7900B64413 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A7991E540E4B00B64413 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58C1A79F1E540E7900B64413 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; };
+		58C1A7A01E540E7900B64413 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +35,21 @@
 			remoteInfo = CouponBellClient;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58C1A7A11E540E7900B64413 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				58C1A7A01E540E7900B64413 /* Realm.framework in Embed Frameworks */,
+				58C1A79E1E540E7900B64413 /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		586524051E51872200E3E79C /* CouponBellClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponBellClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +67,8 @@
 		586524361E5192FF00E3E79C /* CartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		586524381E51950F00E3E79C /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		5865243A1E51955500E3E79C /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		58C1A7991E540E4B00B64413 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		58C1A79A1E540E4B00B64413 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C1A79F1E540E7900B64413 /* Realm.framework in Frameworks */,
+				58C1A79C1E540E4B00B64413 /* Realm.framework in Frameworks */,
+				58C1A79B1E540E4B00B64413 /* RealmSwift.framework in Frameworks */,
+				58C1A79D1E540E7900B64413 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +125,8 @@
 				5865240F1E51872200E3E79C /* Assets.xcassets */,
 				586524111E51872200E3E79C /* LaunchScreen.storyboard */,
 				586524141E51872200E3E79C /* Info.plist */,
+				58C1A7991E540E4B00B64413 /* RealmSwift.framework */,
+				58C1A79A1E540E4B00B64413 /* Realm.framework */,
 			);
 			path = CouponBellClient;
 			sourceTree = "<group>";
@@ -121,6 +150,8 @@
 				586524011E51872200E3E79C /* Sources */,
 				586524021E51872200E3E79C /* Frameworks */,
 				586524031E51872200E3E79C /* Resources */,
+				58C1A7A11E540E7900B64413 /* Embed Frameworks */,
+				58C1A7A21E540EAB00B64413 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -208,6 +239,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58C1A7A21E540EAB00B64413 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		586524011E51872200E3E79C /* Sources */ = {
@@ -359,6 +408,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CouponBellClient",
+				);
 				INFOPLIST_FILE = CouponBellClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BoostCamp.CouponBellClient;
@@ -371,6 +424,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CouponBellClient",
+				);
 				INFOPLIST_FILE = CouponBellClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BoostCamp.CouponBellClient;
@@ -426,6 +483,7 @@
 				586524241E51872200E3E79C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		586524251E51872200E3E79C /* Build configuration list for PBXNativeTarget "CouponBellClientTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +492,7 @@
 				586524271E51872200E3E79C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

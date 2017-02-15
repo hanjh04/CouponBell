@@ -21,6 +21,7 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
     var tableNum = -1
 //    let allMenus = Menu.allMenus
     var menus = (UIApplication.shared.delegate as! AppDelegate).menus
+    
  
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()//전체 데이터 다 다시읽기
@@ -31,31 +32,32 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
         menus.append(Menu(type: "Coffee", product: "Americano", price: 2000, numberClientOrdered: 0))
         menus.append(Menu(type: "Tea", product: "GreenTea", price: 1500, numberClientOrdered: 0))
         menus.append(Menu(type: "Bread", product: "Bagle", price: 2500, numberClientOrdered: 0))
-        print(menus[0].price)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if initial{
-            tableNum = menus.count
-            initial = false
-        }
+//        if initial{
+//            tableNum = menus.count
+//            initial = false
+//        }
         return menus.count
     }
     
     //재사용가능한 셀 있는 지 살펴보고 없으면 새로운 셀 만든다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        print((indexPath as NSIndexPath).row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         cell.index = (indexPath as NSIndexPath).row
+        
+        // 셀 초기값 표시를 위한 설정
         let menu = menus[(indexPath as NSIndexPath).row]//[indexPath.row]
-        
-        if tableNum >= 0{
-            cell.menu = menu
-            tableNum = tableNum - 1
-        }
-        
         cell.firstViewProductNameLabel.text = menu.product
         cell.firstViewPriceLabel.text = String(menu.price)
+        
+        
+//        if tableNum >= 0{
+//            cell.menu = menu
+//            tableNum = tableNum - 1
+//        }
+        
 //        print((indexPath as NSIndexPath).row)
         
         return cell
@@ -67,29 +69,41 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
             return 140
         }else{
             return 140
-            //return 60
+//            return 60
         }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("SelectRowAt")
-        print((indexPath as NSIndexPath).row)
-        let menuInSelectedCell = menus[(indexPath as NSIndexPath).row]
+//        print("SelectRowAt")
+//        print((indexPath as NSIndexPath).row)
+//        let menuInSelectedCell = menus[(indexPath as NSIndexPath).row]
+//        let selectedCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
+//        let prevCell: MenuTableViewCell
+//        
+//        if nowShowingCellIndex == -1 {
+//            prevIndexPath = indexPath
+//        } else if nowShowingCellIndex == indexPath.row && isOpened == true{
+//            prevIndexPath = nil
+//            isOpened = false
+//        } else {
+//            selectedCell.menu = menuInSelectedCell
+//        }
+//
+//        selectedCell.totalPriceLabel.text = String(menuInSelectedCell.numberClientOrdered * menuInSelectedCell.price)
+//        selectedCell.countLabel.text = String(menuInSelectedCell.numberClientOrdered)
+        
+        
+        print(indexPath.row)
         let selectedCell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
-        let prevCell: MenuTableViewCell
-        
-        if nowShowingCellIndex == -1 {
-            prevIndexPath = indexPath
-        } else if nowShowingCellIndex == indexPath.row && isOpened == true{
-            prevIndexPath = nil
-            isOpened = false
+        if selectedCell.isSelected {
+            ()
+            selectedCell.isSelected = false
+            print("cell이 닫혔습니다.")
         } else {
-            selectedCell.menu = menuInSelectedCell
+            selectedCell.isSelected = true
+            print("cell이 열렸습니다.")
         }
-
-        selectedCell.totalPriceLabel.text = String(menuInSelectedCell.numberClientOrdered * menuInSelectedCell.price)
-        selectedCell.countLabel.text = String(menuInSelectedCell.numberClientOrdered)
-        
+        selectedCell.index = indexPath.row
         if selectedIndex == indexPath.row {
             selectedIndex = -1
         }else{
@@ -115,11 +129,49 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
         print("didunhighlightrowat")
     }
-        
+    
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         print("willbegineditingrowat")
     }
-
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        print("willdisplayfooterview")
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        print("willdisplayheaderview")
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("willdisplay")
+    }
+    
+    func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        print("didupdatefocusin")
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("didenddisplaying")
+    }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("moverowat")
+    }
+    
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        print("performaction")
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("edityingstyle")
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+        print("didenddisplayingfooterview")
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+        print("didenddisplayingheaderview")
+    }
     
 }
 
