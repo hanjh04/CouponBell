@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		586524091E51872200E3E79C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586524081E51872200E3E79C /* AppDelegate.swift */; };
-		5865240B1E51872200E3E79C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865240A1E51872200E3E79C /* ViewController.swift */; };
+		5865240B1E51872200E3E79C /* paymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865240A1E51872200E3E79C /* paymentTableViewController.swift */; };
 		5865240E1E51872200E3E79C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5865240C1E51872200E3E79C /* Main.storyboard */; };
 		586524101E51872200E3E79C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5865240F1E51872200E3E79C /* Assets.xcassets */; };
 		586524131E51872200E3E79C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 586524111E51872200E3E79C /* LaunchScreen.storyboard */; };
@@ -24,6 +24,7 @@
 		58C1A79E1E540E7900B64413 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A7991E540E4B00B64413 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58C1A79F1E540E7900B64413 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; };
 		58C1A7A01E540E7900B64413 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58C1A7D01E54382800B64413 /* paymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,7 @@
 /* Begin PBXFileReference section */
 		586524051E51872200E3E79C /* CouponBellClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponBellClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		586524081E51872200E3E79C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5865240A1E51872200E3E79C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5865240A1E51872200E3E79C /* paymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentTableViewController.swift; sourceTree = "<group>"; };
 		5865240D1E51872200E3E79C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5865240F1E51872200E3E79C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		586524121E51872200E3E79C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		5865243A1E51955500E3E79C /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		58C1A7991E540E4B00B64413 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		58C1A79A1E540E4B00B64413 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = paymentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,9 +120,10 @@
 				586524081E51872200E3E79C /* AppDelegate.swift */,
 				586524381E51950F00E3E79C /* MenuTableViewController.swift */,
 				5865243A1E51955500E3E79C /* MenuTableViewCell.swift */,
-				5865240A1E51872200E3E79C /* ViewController.swift */,
 				586524341E5192C200E3E79C /* CartTableViewController.swift */,
 				586524361E5192FF00E3E79C /* CartTableViewCell.swift */,
+				5865240A1E51872200E3E79C /* paymentTableViewController.swift */,
+				58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */,
 				5865240C1E51872200E3E79C /* Main.storyboard */,
 				5865240F1E51872200E3E79C /* Assets.xcassets */,
 				586524111E51872200E3E79C /* LaunchScreen.storyboard */,
@@ -192,6 +195,7 @@
 				TargetAttributes = {
 					586524041E51872200E3E79C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = LHA4V9P7V8;
 						ProvisioningStyle = Automatic;
 					};
 					586524181E51872200E3E79C = {
@@ -253,8 +257,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/sh/usr/local/bin/carthage copy-frameworks";
-			shellScript = "";
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -267,8 +271,9 @@
 				586524391E51950F00E3E79C /* MenuTableViewController.swift in Sources */,
 				5865243B1E51955500E3E79C /* MenuTableViewCell.swift in Sources */,
 				586524311E518B4600E3E79C /* Menu.swift in Sources */,
-				5865240B1E51872200E3E79C /* ViewController.swift in Sources */,
+				5865240B1E51872200E3E79C /* paymentTableViewController.swift in Sources */,
 				586524351E5192C200E3E79C /* CartTableViewController.swift in Sources */,
+				58C1A7D01E54382800B64413 /* paymentTableViewCell.swift in Sources */,
 				586524091E51872200E3E79C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHA4V9P7V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CouponBellClient",
@@ -424,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LHA4V9P7V8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CouponBellClient",

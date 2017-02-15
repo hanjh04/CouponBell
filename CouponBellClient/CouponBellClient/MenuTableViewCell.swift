@@ -9,6 +9,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class MenuTableViewCell: UITableViewCell{
     @IBOutlet weak var firstView: UIView!
@@ -22,8 +23,8 @@ class MenuTableViewCell: UITableViewCell{
     var isFirstSelected = false
     var count = 0
     var index: Int?
-    var menu: Menu?
-    var menus = (UIApplication.shared.delegate as! AppDelegate).menus
+    var productName: String?
+//    var menu: Menu?
     
     @IBAction func plusBtn(_ sender: Any) {
 
@@ -31,10 +32,8 @@ class MenuTableViewCell: UITableViewCell{
         countLabel.text = String(count)
         
         updateTotalPrice()
-        menu = menus[index!]
-        menu?.set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)	
-//        menu?.set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)
-
+        plusCount(count: count)
+        print(index!)
     }
     @IBAction func minusBtn(_ sender: Any) {
 
@@ -42,8 +41,7 @@ class MenuTableViewCell: UITableViewCell{
             count = count - 1
             countLabel.text = String(count)
             updateTotalPrice()
-            menu?.set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)
-
+            minusCount(count: count)
             //            menus[index!].set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)
         }
     }
@@ -52,6 +50,24 @@ class MenuTableViewCell: UITableViewCell{
         totalPriceLabel.text = String(count * Int(firstViewPriceLabel.text!)!)
     }
     
+    func plusCount(count: Int){
+        let realm = try! Realm()
+        let allMenu = realm.objects(Menu.self)
+        let menu = allMenu.filter("product == '\(productName!)'").last
+//        let menu = allMenu.filter("price == '2000'").last
+        try! realm.write {
+            menu?.numberClientOrdered = count
+        }
+    }
+    
+    func minusCount(count: Int){
+        let realm = try! Realm()
+        let allMenu = realm.objects(Menu.self)
+        let menu = allMenu.filter("product == '\(productName!)'").last
+        try! realm.write {
+            menu?.numberClientOrdered = count
+        }
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
