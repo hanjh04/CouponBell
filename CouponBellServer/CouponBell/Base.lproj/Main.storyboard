@@ -453,9 +453,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="Beq-tS-CKJ" kind="relationship" relationship="viewControllers" id="z0d-x6-SJf"/>
                         <segue destination="jHg-80-lEe" kind="relationship" relationship="viewControllers" id="4kM-sO-qjR"/>
                         <segue destination="6qN-Wx-vYx" kind="relationship" relationship="viewControllers" id="4LK-g0-C9b"/>
-                        <segue destination="Beq-tS-CKJ" kind="relationship" relationship="viewControllers" id="z0d-x6-SJf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E6E-g0-5bP" userLabel="First Responder" sceneMemberID="firstResponder"/>

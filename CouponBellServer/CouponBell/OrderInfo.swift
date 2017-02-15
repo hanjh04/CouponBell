@@ -18,6 +18,4 @@ class OrderInfo: Object{
     dynamic var orderedDate = NSDate()
     dynamic var completedDate: NSDate?
     dynamic var isCompleted = false
-    
-    
 }
