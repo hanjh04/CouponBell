@@ -12,13 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, NetServiceDelegate {
 
     var window: UIWindow?
-    
+    var server: NetService!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // Create and advertise our server.  We only want the service to be registered on
         // local networks so we pass in the "local." domain.
+        
+        
+        //publish service for server
+//        server = NetService.init(domain: "local", type: "_test._tcp", name: "CouponBellServer", port: 3000)
+//        server.includesPeerToPeer = true
+//        server.schedule(in: RunLoop.current, forMode: RunLoopMode.commonModes)
+//        server.delegate = self
+//        server.publish(options: .listenForConnections)
+        
+        
         return true
     }
 

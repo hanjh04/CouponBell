@@ -15,6 +15,12 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
     var orderInfos: Results<OrderInfo>?
     
     override func viewWillAppear(_ animated: Bool) {
+//        addToOrderInfoList(count: 1, type: "Coffee", menu: "Americano", price: 2000, isCompleted:false)
+//        addToOrderInfoList(count: 2, type: "Coffee", menu: "Espresso", price: 1500, isCompleted: false)
+//        addToOrderInfoList(count: 3, type: "Tea", menu: "BlackTea", price: 2000, isCompleted: false)
+//        addToOrderInfoList(count: 4, type: "Tea", menu: "GreenTea", price: 2500, isCompleted: false)
+
+        
         orderInfos = getFromOrderInfoList(identifier: self.restorationIdentifier!)
         for orderInfo in orderInfos!{
             print(orderInfo.menu)
@@ -37,13 +43,36 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
         
         let item = self.orderInfos?[(indexPath as NSIndexPath).row]
         
-        cell.userMenuLabel.text = item?.menu
-        cell.userStateLabel.text = String(describing: item?.isCompleted)
-        cell.userOrderDateLabel.text = String(describing: item?.orderedDate)
-        cell.userOrderNumberLabel.text = String(describing: item?.count)
+        cell.userMenuLabel.text = item!.menu
+        cell.userStateLabel.text = String(describing: item!.isCompleted)
+        cell.userOrderDateLabel.text = String(describing: item!.orderedDate)
+        cell.userOrderNumberLabel.text = String(describing: item!.count)
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            print("delete")
+        } else if editingStyle == .insert{
+            print("insert")
+        } else if editingStyle == .none {
+            print("none")
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        var shareAction = UITableViewRowAction(style: .normal, title: "완료"){ (action: UITableViewRowAction!, indexPath: NSIndexPath) -> Void in
+//
+////            let firstActivityItem = self.p
+//            let activityViewController = UIActivityViewController(activityItems: firstActivityItem, applicationActivities:  nil)
+//            
+//            self.present(activityViewController, animated: true, completion: nil)
+//            
+//        }
+//        
+//        shareAction.backgroundColor = UIColor.blue
+//    }
     
     func addToOrderInfoList(count: Int, type: String, menu: String, price: Int, isCompleted: Bool){
         let realm = try! Realm()
