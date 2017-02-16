@@ -23,6 +23,9 @@ class MenuTableViewCell: UITableViewCell{
     var count = 0
     var index: Int?
     var productName: String?
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     //    var menu: Menu?
     
     @IBAction func plusBtn(_ sender: Any) {
@@ -43,13 +46,22 @@ class MenuTableViewCell: UITableViewCell{
         }
     }
     
+    
+    
     func updateTotalPrice(){
         totalPriceLabel.text = String(count * Int(firstViewPriceLabel.text!)!)
     }
     
     func plusCount(count: Int){
-        let realm = try! Realm()
-        let allMenu = realm.objects(Menu.self)
+//        var orderList = appDelegate.myOrderLists[index!]
+//        
+//        orderList.numberClientOrdered = count
+        print(index)
+        if appDelegate.myOrderLists == nil{
+            print("shit!!")
+        }
+        appDelegate.myOrderLists[index!].numberClientOrdered = count
+        
 //        let menu = allMenu.filter("product == '\(productName!)'").last
         //        let menu = allMenu.filter("price == '2000'").last
 //        try! realm.write {

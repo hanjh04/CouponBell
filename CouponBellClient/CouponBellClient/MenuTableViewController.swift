@@ -64,14 +64,16 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
         
         let orderList = myOrderList[indexPath.row]
         
+        // 셀 초기값 표시를 위한 설정
+        cell.firstViewProductNameLabel.text = orderList.product
+        cell.firstViewPriceLabel.text = String(describing:orderList.price!)
         //cell에 현재 선택된 인덱스값 넘겨줌!
         cell.productName = orderList.product
         cell.count = orderList.numberClientOrdered
         cell.countLabel.text = String(orderList.numberClientOrdered)
         cell.totalPriceLabel.text = String(orderList.numberClientOrdered * orderList.price)
-        // 셀 초기값 표시를 위한 설정
-        cell.firstViewProductNameLabel.text = orderList.product
-        cell.firstViewPriceLabel.text = String(describing:orderList.price!)
+        cell.index = indexPath.row
+        
         
         return cell
     }

@@ -12,7 +12,7 @@ class MyOrderList{
     let type: String!
     let product: String!
     let price: Int!
-    let numberClientOrdered = 0
+    var numberClientOrdered = 0
     
     
     // MARK: init
