@@ -24,7 +24,6 @@ class Menu: Object{
     dynamic var type = ""
     dynamic var product = ""
     dynamic var price = 0
-    dynamic var numberClientOrdered = 0
 }
 
 //dynamic var count = 0

@@ -16,6 +16,7 @@ enum SocketState : Int {
     
 }
 
+
 class Socket: NSObject {
     
     var inputStream  : InputStream?
@@ -23,6 +24,7 @@ class Socket: NSObject {
     var runloop      : RunLoop?
     var status : Int = -1
     var timeout      : Float = 5.0;
+    var portNumber: UInt16?
     weak var mStreamDelegate:StreamDelegate?
     
     func initSockerCommunication( _ host:CFString , port : UInt32 ){
@@ -34,6 +36,8 @@ class Socket: NSObject {
             var writestream : Unmanaged<CFWriteStream>?
             
             CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, host, port, &readstream, &writestream)
+            
+            self.portNumber = CFSocketGetDefaultNameRegistryPortNumber() // 2454
             
             self.inputStream = readstream!.takeRetainedValue()
             self.outputStream = writestream!.takeRetainedValue()
@@ -54,6 +58,9 @@ class Socket: NSObject {
         var writeStream : Unmanaged<CFWriteStream>?
 
         CFStreamCreatePairWithSocket(kCFAllocatorDefault, socket, &readStream, &writeStream)
+        
+//        CFSocket
+//        SocketPort
         
         self.inputStream = readStream!.takeRetainedValue()
         self.outputStream = writeStream!.takeRetainedValue()
@@ -84,10 +91,10 @@ class Socket: NSObject {
     func getOutputStream() -> OutputStream {
         print()
         print("getoutputstream is called")
+        
         return self.outputStream!
     }
 }
-
 extension Socket : StreamDelegate{
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         switch (eventCode){

@@ -50,20 +50,20 @@ class MenuTableViewCell: UITableViewCell{
     func plusCount(count: Int){
         let realm = try! Realm()
         let allMenu = realm.objects(Menu.self)
-        let menu = allMenu.filter("product == '\(productName!)'").last
+//        let menu = allMenu.filter("product == '\(productName!)'").last
         //        let menu = allMenu.filter("price == '2000'").last
-        try! realm.write {
-            menu?.numberClientOrdered = count
-        }
+//        try! realm.write {
+//            menu?.numberClientOrdered = count
+//        }
     }
     
     func minusCount(count: Int){
         let realm = try! Realm()
         let allMenu = realm.objects(Menu.self)
-        let menu = allMenu.filter("product == '\(productName!)'").last
-        try! realm.write {
-            menu?.numberClientOrdered = count
-        }
+//        let menu = allMenu.filter("product == '\(productName!)'").last
+//        try! realm.write {
+//            menu?.numberClientOrdered = count
+//        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

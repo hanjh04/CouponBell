@@ -22,15 +22,15 @@ class paymentTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let realm = try! Realm()
-        allMenus = realm.objects(Menu.self).filter("numberClientOrdered != 0")
-        tableView.reloadData()
-        if(allMenus?.count != 0){
-            for menu in allMenus! {
-                totalPrice = totalPrice + (menu.price * menu.numberClientOrdered)
-            }
-            totalPriceLabel.text = String(totalPrice)
-        }
+//        let realm = try! Realm()
+//        allMenus = realm.objects(Menu.self).filter("numberClientOrdered != 0")
+//        tableView.reloadData()
+//        if(allMenus?.count != 0){
+//            for menu in allMenus! {
+//                totalPrice = totalPrice + (menu.price * menu.numberClientOrdered)
+//            }
+//            totalPriceLabel.text = String(totalPrice)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,19 +43,22 @@ class paymentTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (allMenus?.count)!
+        if allMenus == nil{
+            return 0
+        }
+        return allMenus!.count
     }
     
     //재사용가능한 셀 있는 지 살펴보고 없으면 새로운 셀 만든다.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentTableViewCell", for: indexPath) as! paymentTableViewCell
-        var menu = Menu()
-        if allMenus?.count != 0{
-            menu = (allMenus?[indexPath.row])!
-            cell.quantityLabel.text = String(menu.numberClientOrdered)
-            cell.productNameLabel.text = menu.product
-            cell.priceLabel.text = String(menu.numberClientOrdered * menu.price)
-        }
+//        var menu = Menu()
+//        if allMenus?.count != 0{
+//            menu = (allMenus?[indexPath.row])!
+//            cell.quantityLabel.text = String(menu.numberClientOrdered)
+//            cell.productNameLabel.text = menu.product
+//            cell.priceLabel.text = String(menu.numberClientOrdered * menu.price)
+//        }
         return cell
     }
 }

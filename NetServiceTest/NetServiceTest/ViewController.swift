@@ -16,6 +16,7 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
     var port:Int?
     @IBOutlet weak var connectStateLabel: UILabel!
     @IBOutlet weak var msgLabel: UILabel!
+    @IBOutlet weak var portNumberLabel: UILabel!
     
     var inputStream: InputStream?
     var outputStream: OutputStream?
@@ -79,6 +80,10 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
     @IBAction func sendBtn(_ sender: Any) {
         sendMessage(msg: "ABCD")
     }
+    
+//    @IBAction func sendFromServerBtn(_ sender: Any){
+//        sendMessageFromServer(msg: "ABCD")
+//    }
     
     @IBAction func receiveBtn(_ sender: Any) {
     }
@@ -200,12 +205,38 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
     
     func netService(_ sender: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream){
         print("netService : \(sender) didAcceptConnectionWith Input Stream : \(inputStream) , Output Stream : \(outputStream)")
+        
+        
         inputStream.delegate = self
         outputStream.delegate = self
         inputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         outputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         inputStream.open()
         outputStream.open()
+
+        portNumberLabel.text = String(CFSocketGetDefaultNameRegistryPortNumber())
+        inoutStreams.last?.server.stop()
+//        print(CFSocketGetDefaultNameRegistryPortNumber())
+//        SocketPort.init(port: CFSocketGetDefaultNameRegistryPortNumber())
+        
+        
+//        sendMessageFromServer(msg: "ABCDEF", outStream: outputStream)
+        
+        
+//        inoutStreams.last?.socket?.inputStream?.delegate = self
+//        inoutStreams.last?.socket?.outputStream?.delegate = self
+//        inoutStreams.last?.socket?.inputStream = inputStream
+//        inoutStreams.last?.socket?.outputStream = outputStream
+//    
+//        inoutStreams.last?.socket?.inputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+//        inoutStreams.last?.socket?.outputStream?.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+//
+//        inoutStreams.last?.socket?.inputStream?.open()
+//        inoutStreams.last?.socket?.outputStream?.open()
+        
+        
+        
+//        setStreams(inputStream: inputStream, outputStream: outputStream)
         
 //        socket?.inputStream = inputStream
 //        socket?.outputStream = outputStream
@@ -284,6 +315,31 @@ class ViewController: UIViewController, NetServiceDelegate, NetServiceBrowserDel
         } else {
             print("The number of bytes written is \(result)")
         }
+    }
+    
+    func sendMessageFromServer(msg: String , outStream: OutputStream?){
+        guard let outputStream = outStream else {
+            print("Connection not create yet ! =====> Return")
+            return
+        }
+        let data = msg.data(using: String.Encoding.utf8)
+        outputStream.open()
+        
+        let result = data?.withUnsafeBytes { outputStream.write($0, maxLength: (data?.count)!) }
+        
+        if result == 0 {
+            print("Stream at capacity")
+        } else if result == -1 {
+            print("Operation failed: \(outputStream.streamError)")
+        } else {
+            print("The number of bytes written is \(result)")
+        }
+    }
+
+    
+    // open streams
+    func openStreams(inoutStream: InOutStream){
+        
     }
 }
 
