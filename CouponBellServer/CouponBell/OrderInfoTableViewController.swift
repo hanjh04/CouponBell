@@ -13,16 +13,19 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var tableView: UITableView!
     var orderInfos: Results<OrderInfo>?
+    var dbQuery = DbQuery()
     
+    @IBOutlet weak var sendBtn: UIBarButtonItem!
+    @IBAction func sendBtn(_ sender: Any) {
+        (UIApplication.shared.delegate as! AppDelegate).sendMessage(msg: "abcde")
+    }
     override func viewWillAppear(_ animated: Bool) {
-
-        //addToOrderInfoList(count: 1, type: "Coffee", menu: "Americano", price: 2000, isCompleted: false)
-        //addToOrderInfoList(count: 2, type: "Coffee", menu: "Espresso", price: 1500, isCompleted: false)
-        //addToOrderInfoList(count: 3, type: "Tea", menu: "BlackTea", price: 2000, isCompleted: false)
-        //addToOrderInfoList(count: 4, type: "Tea", menu: "GreenTea", price: 2500, isCompleted: false)
-
         //db에 저장된 정보들 불러오기
-        orderInfos = getFromOrderInfoList(identifier: self.restorationIdentifier!)
+        if self.restorationIdentifier == "preparing"{
+            orderInfos = dbQuery.getFromOrderInfoList(isCompleted: false)
+        }else{
+            orderInfos = dbQuery.getFromOrderInfoList(isCompleted: true)
+        }
         
         //전체 데이터 다 다시읽기
         tableView.reloadData()
@@ -34,8 +37,6 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
         if orderInfos == nil{
             return 0
         }
-        print("ddddddddddd")
-        print(orderInfos!.count)
         return self.orderInfos!.count
     }
     
@@ -70,7 +71,10 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
             let sendAlarm = UIAlertController(title: "완료", message: "알람 메시지를 보내시겠습니가?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "뒤로가기", style: .default, handler: nil)
             let okAction = UIAlertAction(title: "보내기", style: .default) { ( action: UIAlertAction ) in
-                print("ddd")
+                
+                let cell = tableView.cellForRow(at: indexPath) as! OrderInfoTableViewCell
+                self.dbQuery.changeIsCompletedFromOrderInfoList(orderNumber: Int(cell.userOrderNumberLabel.text!)!)
+                tableView.reloadData()
                 //보내는 기능 추가하기!
             }
             
@@ -85,30 +89,30 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
         return [notifyAction]
     }
     
-    func addToOrderInfoList(count: Int, type: String, menu: String, price: Int, isCompleted: Bool){
-        let realm = try! Realm()
-        let orderInfo = OrderInfo()
-        orderInfo.count = count
-        orderInfo.type = type
-        orderInfo.menu = menu
-        orderInfo.orderedDate = NSDate()
-        orderInfo.isCompleted = false
-        try! realm.write{
-            realm.add(orderInfo)
-            print("add succeed")
-        }
-    }
+//    func addToOrderInfoList(count: Int, type: String, menu: String, price: Int, isCompleted: Bool){
+//        let realm = try! Realm()
+//        let orderInfo = OrderInfo()
+//        orderInfo.count = count
+//        orderInfo.type = type
+//        orderInfo.menu = menu
+//        orderInfo.orderedDate = NSDate()
+//        orderInfo.isCompleted = false
+//        try! realm.write{
+//            realm.add(orderInfo)
+//            print("add succeed")
+//        }
+//    }
     
-    func getFromOrderInfoList(identifier: String) -> Results<OrderInfo>{
-        let realm = try! Realm()
-        
-        let allLists = realm.objects(OrderInfo.self)
-        if identifier == "preparing" {
-            return allLists.filter("isCompleted == false")
-        }else{
-            return allLists.filter("isCompleted == true")
-        }
-    }
+//    func getFromOrderInfoList(identifier: String) -> Results<OrderInfo>{
+//        let realm = try! Realm()
+//        
+//        let allLists = realm.objects(OrderInfo.self)
+//        if identifier == "preparing" {
+//            return allLists.filter("isCompleted == false")
+//        }else{
+//            return allLists.filter("isCompleted == true")
+//        }
+//    }
 }
 
 
