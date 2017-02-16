@@ -6,7 +6,6 @@
 //  Copyright © 2017년 BoostCamp. All rights reserved.
 //
 
-
 import Foundation
 import UIKit
 import RealmSwift
@@ -24,25 +23,23 @@ class MenuTableViewCell: UITableViewCell{
     var count = 0
     var index: Int?
     var productName: String?
-//    var menu: Menu?
+    //    var menu: Menu?
     
     @IBAction func plusBtn(_ sender: Any) {
-
+        
         count = count + 1
         countLabel.text = String(count)
         
         updateTotalPrice()
         plusCount(count: count)
-        print(index!)
     }
     @IBAction func minusBtn(_ sender: Any) {
-
+        
         if count > 1 {
             count = count - 1
             countLabel.text = String(count)
             updateTotalPrice()
             minusCount(count: count)
-            //            menus[index!].set(keyType: KeyType.NumberClientOrderedKey, changeValue: countLabel.text!)
         }
     }
     
@@ -54,7 +51,7 @@ class MenuTableViewCell: UITableViewCell{
         let realm = try! Realm()
         let allMenu = realm.objects(Menu.self)
         let menu = allMenu.filter("product == '\(productName!)'").last
-//        let menu = allMenu.filter("price == '2000'").last
+        //        let menu = allMenu.filter("price == '2000'").last
         try! realm.write {
             menu?.numberClientOrdered = count
         }
@@ -79,4 +76,3 @@ class MenuTableViewCell: UITableViewCell{
         }
     }
 }
-
