@@ -10,11 +10,7 @@ import Foundation
 import UIKit
 // Mark: - Items
 
-enum Group{
-    case Coffee
-    case Tea
-    case Bread
-}
+
 
 struct Item{
     
@@ -52,3 +48,8 @@ extension Item{
         [Item.TypeKey : "Bread", Item.MenuKey : "Bagle", Item.PriceKey : "2500"]]
     }
 }
+//enum Group{
+//    case Coffee
+//    case Tea
+//    case Bread
+//}

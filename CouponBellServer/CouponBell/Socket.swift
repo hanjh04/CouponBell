@@ -29,7 +29,7 @@ class Socket: NSObject {
     
     func initSockerCommunication( _ host:CFString , port : UInt32 ){
         print()
-        print("initSockerCommunication is called")
+        print("initSocketCommunication is called")
         DispatchQueue.global().async {
             
             var readstream : Unmanaged<CFReadStream>?

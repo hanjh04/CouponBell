@@ -15,17 +15,17 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
     var orderInfos: Results<OrderInfo>?
     
     override func viewWillAppear(_ animated: Bool) {
-//        addToOrderInfoList(count: 1, type: "Coffee", menu: "Americano", price: 2000, isCompleted:false)
-//        addToOrderInfoList(count: 2, type: "Coffee", menu: "Espresso", price: 1500, isCompleted: false)
-//        addToOrderInfoList(count: 3, type: "Tea", menu: "BlackTea", price: 2000, isCompleted: false)
-//        addToOrderInfoList(count: 4, type: "Tea", menu: "GreenTea", price: 2500, isCompleted: false)
 
-        
+        //addToOrderInfoList(count: 1, type: "Coffee", menu: "Americano", price: 2000, isCompleted: false)
+        //addToOrderInfoList(count: 2, type: "Coffee", menu: "Espresso", price: 1500, isCompleted: false)
+        //addToOrderInfoList(count: 3, type: "Tea", menu: "BlackTea", price: 2000, isCompleted: false)
+        //addToOrderInfoList(count: 4, type: "Tea", menu: "GreenTea", price: 2500, isCompleted: false)
+
+        //db에 저장된 정보들 불러오기
         orderInfos = getFromOrderInfoList(identifier: self.restorationIdentifier!)
-        for orderInfo in orderInfos!{
-            print(orderInfo.menu)
-        }
-        tableView.reloadData()//전체 데이터 다 다시읽기
+        
+        //전체 데이터 다 다시읽기
+        tableView.reloadData()
     }
     
     // MARK: 테이블뷰 설정
@@ -34,12 +34,15 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
         if orderInfos == nil{
             return 0
         }
+        print("ddddddddddd")
         print(orderInfos!.count)
         return self.orderInfos!.count
     }
+    
     //재사용가능한 셀 있는 지 살펴보고 없으면 새로운 셀 만든다.
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInfoTableViewCell", for: indexPath) as! OrderInfoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInfoTableViewCell", for: indexPath)as! OrderInfoTableViewCell
         
         let item = self.orderInfos?[(indexPath as NSIndexPath).row]
         
@@ -61,18 +64,26 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        var shareAction = UITableViewRowAction(style: .normal, title: "완료"){ (action: UITableViewRowAction!, indexPath: NSIndexPath) -> Void in
-//
-////            let firstActivityItem = self.p
-//            let activityViewController = UIActivityViewController(activityItems: firstActivityItem, applicationActivities:  nil)
-//            
-//            self.present(activityViewController, animated: true, completion: nil)
-//            
-//        }
-//        
-//        shareAction.backgroundColor = UIColor.blue
-//    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let notifyAction = UITableViewRowAction (style: .normal , title: "완료") { ( action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in
+            
+            let sendAlarm = UIAlertController(title: "완료", message: "알람 메시지를 보내시겠습니가?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "뒤로가기", style: .default, handler: nil)
+            let okAction = UIAlertAction(title: "보내기", style: .default) { ( action: UIAlertAction ) in
+                print("ddd")
+                //보내는 기능 추가하기!
+            }
+            
+            sendAlarm.addAction(okAction)
+            sendAlarm.addAction(cancelAction)
+            
+            self.present(sendAlarm, animated: false, completion: nil)
+        }
+        
+        notifyAction.backgroundColor = UIColor.brown
+        
+        return [notifyAction]
+    }
     
     func addToOrderInfoList(count: Int, type: String, menu: String, price: Int, isCompleted: Bool){
         let realm = try! Realm()
@@ -91,7 +102,7 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
     func getFromOrderInfoList(identifier: String) -> Results<OrderInfo>{
         let realm = try! Realm()
         
-        let allLists = realm.objects(OrderInfo)
+        let allLists = realm.objects(OrderInfo.self)
         if identifier == "preparing" {
             return allLists.filter("isCompleted == false")
         }else{
@@ -106,7 +117,7 @@ class OrderInfoTableViewController: UIViewController, UITableViewDataSource, UIT
 
 
 
-//        addToOrderInfoList(count: 1, type: "Coffee", menu: "Americano", price: 2000, isCompleted: false)
-//        addToOrderInfoList(count: 2, type: "Coffee", menu: "Espresso", price: 1500, isCompleted: false)
-//        addToOrderInfoList(count: 3, type: "Tea", menu: "BlackTea", price: 2000, isCompleted: false)
-//        addToOrderInfoList(count: 4, type: "Tea", menu: "GreenTea", price: 2500, isCompleted: false)
+//addToOrderInfoList(count: 1, type: "Coffee", menu: "Americano", price: 2000, isCompleted: false)
+//addToOrderInfoList(count: 2, type: "Coffee", menu: "Espresso", price: 1500, isCompleted: false)
+//addToOrderInfoList(count: 3, type: "Tea", menu: "BlackTea", price: 2000, isCompleted: false)
+//addToOrderInfoList(count: 4, type: "Tea", menu: "GreenTea", price: 2500, isCompleted: false)

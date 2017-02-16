@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n2O-IP-E7V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LYH-Vm-ISt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--주문 목록-->
         <scene sceneID="EFF-HC-El4">
             <objects>
                 <viewController storyboardIdentifier="preparing" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Beq-tS-CKJ" customClass="OrderInfoTableViewController" customModule="CouponBell" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8C7-1i-J7J">
-                                <rect key="frame" x="0.0" y="83" width="375" height="584"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderInfoTableViewCell" rowHeight="60" id="bxY-0J-6Qi" customClass="OrderInfoTableViewCell" customModule="CouponBell" customModuleProvider="target">
@@ -118,35 +118,16 @@
                                     <outlet property="delegate" destination="Beq-tS-CKJ" id="wpk-9b-Hhf"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fxl-BC-mVL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="주문목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Em-FD-EtE">
-                                        <rect key="frame" x="149" y="21" width="76" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="TxB-9B-eeg"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8C7-1i-J7J" secondAttribute="trailing" id="DH3-e5-uJd"/>
-                            <constraint firstItem="Fxl-BC-mVL" firstAttribute="leading" secondItem="Slo-tP-v3a" secondAttribute="leading" id="RCD-xK-fmK"/>
-                            <constraint firstItem="8C7-1i-J7J" firstAttribute="leading" secondItem="Slo-tP-v3a" secondAttribute="leading" id="RiR-Rz-EZ6"/>
-                            <constraint firstItem="8C7-1i-J7J" firstAttribute="top" secondItem="Fxl-BC-mVL" secondAttribute="bottom" constant="8" id="Upp-lj-4ow"/>
-                            <constraint firstAttribute="bottom" secondItem="8C7-1i-J7J" secondAttribute="bottom" id="Ur8-Y9-02J"/>
-                            <constraint firstAttribute="trailing" secondItem="Fxl-BC-mVL" secondAttribute="trailing" id="cpQ-09-J8c"/>
-                            <constraint firstItem="Fxl-BC-mVL" firstAttribute="top" secondItem="Slo-tP-v3a" secondAttribute="top" id="tih-zD-Jp6"/>
+                            <constraint firstAttribute="bottom" secondItem="8C7-1i-J7J" secondAttribute="bottom" id="44U-zN-Ix8"/>
+                            <constraint firstItem="8C7-1i-J7J" firstAttribute="top" secondItem="0Tu-Gq-1kx" secondAttribute="bottom" id="g07-0s-klp"/>
+                            <constraint firstAttribute="trailing" secondItem="8C7-1i-J7J" secondAttribute="trailing" id="wqL-JT-PG9"/>
+                            <constraint firstItem="8C7-1i-J7J" firstAttribute="leading" secondItem="Slo-tP-v3a" secondAttribute="leading" id="xhm-IV-fSY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="a0G-Jg-Wxb"/>
+                    <tabBarItem key="tabBarItem" title="주문 목록" id="a0G-Jg-Wxb"/>
                     <navigationItem key="navigationItem" id="SNS-3O-ggl"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -155,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eqe-bw-iOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="153" y="-1333"/>
+            <point key="canvasLocation" x="-178.40000000000001" y="-1334.4827586206898"/>
         </scene>
         <!--Coupon Bell Detail View Controller-->
         <scene sceneID="oyy-zb-irY">
@@ -299,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xii-6d-gHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="-593"/>
+            <point key="canvasLocation" x="310" y="-655"/>
         </scene>
         <!--CompleteList-->
         <scene sceneID="50w-vb-RQO">
@@ -443,27 +424,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsA-Af-SPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="-1334"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="fNm-ce-4r7">
-            <objects>
-                <tabBarController id="n2O-IP-E7V" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="YAl-1Y-kOE"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="lJm-2c-dFu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Beq-tS-CKJ" kind="relationship" relationship="viewControllers" id="z0d-x6-SJf"/>
-                        <segue destination="jHg-80-lEe" kind="relationship" relationship="viewControllers" id="4kM-sO-qjR"/>
-                        <segue destination="6qN-Wx-vYx" kind="relationship" relationship="viewControllers" id="4LK-g0-C9b"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E6E-g0-5bP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1084" y="-2102"/>
+            <point key="canvasLocation" x="713" y="-1334"/>
         </scene>
         <!--Menu-->
         <scene sceneID="AEg-SW-Jtd">
@@ -532,7 +493,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVm-z5-iIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="-593"/>
+            <point key="canvasLocation" x="2377" y="-593"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vLX-HE-67z">
@@ -568,13 +529,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bH2-NB-TWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2876" y="-593"/>
+            <point key="canvasLocation" x="3242" y="-593"/>
         </scene>
-        <!--Menu-->
+        <!--Navigation Controller-->
+        <scene sceneID="sqI-cJ-SUR">
+            <objects>
+                <navigationController id="LYH-Vm-ISt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dCP-Gd-OLu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y5q-EY-1HA" kind="relationship" relationship="rootViewController" id="RwA-in-d2d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9U-Nn-use" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1138" y="-2821"/>
+        </scene>
+        <!--연결 상태-->
+        <scene sceneID="MgM-f6-9UG">
+            <objects>
+                <viewController id="93q-xL-CBC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ax8-P4-kF3"/>
+                        <viewControllerLayoutGuide type="bottom" id="KYR-gM-cZU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xO7-fM-OHg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvG-Iy-Joq">
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="연결 상태" id="xXa-Ko-aPW"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQd-UO-FGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1549.5999999999999" y="-1329.0854572713645"/>
+        </scene>
+        <!--메뉴 관리-->
         <scene sceneID="KqI-yy-xNf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6qN-Wx-vYx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" id="RZh-xm-lvh"/>
+                    <tabBarItem key="tabBarItem" title="메뉴 관리" id="RZh-xm-lvh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xdR-rS-Ins">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -587,7 +591,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPc-QA-TVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2025" y="-1334"/>
+            <point key="canvasLocation" x="2378" y="-1334"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Edi-WP-sxX">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Y5q-EY-1HA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="3oG-yt-6TM"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="uAL-dc-dA4">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Beq-tS-CKJ" kind="relationship" relationship="viewControllers" id="RGA-QE-868"/>
+                        <segue destination="jHg-80-lEe" kind="relationship" relationship="viewControllers" id="GxX-rM-qmA"/>
+                        <segue destination="93q-xL-CBC" kind="relationship" relationship="viewControllers" id="UmX-Iz-X0N"/>
+                        <segue destination="6qN-Wx-vYx" kind="relationship" relationship="viewControllers" id="5Hg-Jx-Fyc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zu-6h-G7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1138" y="-2115"/>
         </scene>
     </scenes>
 </document>
