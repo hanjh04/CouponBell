@@ -14,10 +14,7 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     let dbQuery = DbQuery()
-    var myOrderList = [MyOrderList]()
-    
-    
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var selectedIndex = -1
     var nowShowingCellIndex = -1
@@ -35,7 +32,6 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
 //        dbQuery.addMenuList(type: "Tea", product: "BlackTea", price: 2000)         //
 //        dbQuery.addMenuList(type: "Bread", product: "Bagle", price: 2500)          //
 ///////////////////////////////////////////////////////////////////////////////////////
-        print(NSHomeDirectory())
         
         super.viewDidLoad()
     }
@@ -43,7 +39,7 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         allMenus = dbQuery.getAllMenu()
         for menu in allMenus!{
-            myOrderList.append(MyOrderList(type: menu.type, product: menu.product, price: menu.price))
+            appDelegate.myOrderList.append(MyOrderList(type: menu.type, product: menu.product, price: menu.price))
         }
         tableView.reloadData()//전체 데이터 다 다시읽기
     }
@@ -62,16 +58,16 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
         
-        let orderList = myOrderList[indexPath.row]
+        let myOrder = appDelegate.myOrderList[indexPath.row]
         
         // 셀 초기값 표시를 위한 설정
-        cell.firstViewProductNameLabel.text = orderList.product
-        cell.firstViewPriceLabel.text = String(describing:orderList.price!)
+        cell.firstViewProductNameLabel.text = myOrder.product
+        cell.firstViewPriceLabel.text = String(describing:myOrder.price!)
         //cell에 현재 선택된 인덱스값 넘겨줌!
-        cell.productName = orderList.product
-        cell.count = orderList.numberClientOrdered
-        cell.countLabel.text = String(orderList.numberClientOrdered)
-        cell.totalPriceLabel.text = String(orderList.numberClientOrdered * orderList.price)
+        cell.productName = myOrder.product
+        cell.count = (myOrder.quantity)
+        cell.countLabel.text = String(describing: myOrder.quantity)
+        cell.totalPriceLabel.text = String((myOrder.quantity) * (myOrder.price))
         cell.index = indexPath.row
         
         
