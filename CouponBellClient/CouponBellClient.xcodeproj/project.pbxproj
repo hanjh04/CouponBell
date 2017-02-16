@@ -25,6 +25,7 @@
 		58C1A79F1E540E7900B64413 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; };
 		58C1A7A01E540E7900B64413 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 58C1A79A1E540E4B00B64413 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58C1A7D01E54382800B64413 /* paymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */; };
+		58C1A7E01E55A6BA00B64413 /* MyOrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1A7DF1E55A6BA00B64413 /* MyOrderList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		58C1A7991E540E4B00B64413 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		58C1A79A1E540E4B00B64413 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = paymentTableViewCell.swift; sourceTree = "<group>"; };
+		58C1A7DF1E55A6BA00B64413 /* MyOrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +118,10 @@
 		586524071E51872200E3E79C /* CouponBellClient */ = {
 			isa = PBXGroup;
 			children = (
-				5865242E1E518B4600E3E79C /* Menu.swift */,
+				58C1A7DE1E55A68A00B64413 /* Model */,
+				58C1A7DD1E55A67500B64413 /* View */,
+				58C1A7DC1E55A64F00B64413 /* Controller */,
 				586524081E51872200E3E79C /* AppDelegate.swift */,
-				586524381E51950F00E3E79C /* MenuTableViewController.swift */,
-				5865243A1E51955500E3E79C /* MenuTableViewCell.swift */,
-				586524341E5192C200E3E79C /* CartTableViewController.swift */,
-				586524361E5192FF00E3E79C /* CartTableViewCell.swift */,
-				5865240A1E51872200E3E79C /* paymentTableViewController.swift */,
-				58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */,
 				5865240C1E51872200E3E79C /* Main.storyboard */,
 				5865240F1E51872200E3E79C /* Assets.xcassets */,
 				586524111E51872200E3E79C /* LaunchScreen.storyboard */,
@@ -141,6 +139,35 @@
 				5865241F1E51872200E3E79C /* Info.plist */,
 			);
 			path = CouponBellClientTests;
+			sourceTree = "<group>";
+		};
+		58C1A7DC1E55A64F00B64413 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5865240A1E51872200E3E79C /* paymentTableViewController.swift */,
+				586524341E5192C200E3E79C /* CartTableViewController.swift */,
+				586524381E51950F00E3E79C /* MenuTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		58C1A7DD1E55A67500B64413 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */,
+				5865243A1E51955500E3E79C /* MenuTableViewCell.swift */,
+				586524361E5192FF00E3E79C /* CartTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		58C1A7DE1E55A68A00B64413 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5865242E1E518B4600E3E79C /* Menu.swift */,
+				58C1A7DF1E55A6BA00B64413 /* MyOrderList.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +298,7 @@
 				586524391E51950F00E3E79C /* MenuTableViewController.swift in Sources */,
 				5865243B1E51955500E3E79C /* MenuTableViewCell.swift in Sources */,
 				586524311E518B4600E3E79C /* Menu.swift in Sources */,
+				58C1A7E01E55A6BA00B64413 /* MyOrderList.swift in Sources */,
 				5865240B1E51872200E3E79C /* paymentTableViewController.swift in Sources */,
 				586524351E5192C200E3E79C /* CartTableViewController.swift in Sources */,
 				58C1A7D01E54382800B64413 /* paymentTableViewCell.swift in Sources */,
