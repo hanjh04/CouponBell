@@ -18,23 +18,34 @@ class paymentTableViewController: UIViewController, UITableViewDelegate, UITable
     var allMenus: Results<Menu>?
     var totalPrice = 0
     var haveToPay = [MyOrderList]()
-
+    var orderListDict: Dictionary<String, Int>?
+    var myNetwork: MyNetwork?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myNetwork = MyNetwork.sharedInstance()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     @IBAction func sendBtn(_ sender: Any) {
-        (UIApplication.shared.delegate as! AppDelegate).sendMessage(msg: "abcdefg")
+        if (myNetwork?.sendJSONMessage(orderListDic: orderListDict!))!{
+            dismiss(animated: true, completion: nil)
+        }else{
+            print("다시 시도해보세요")
+        }
+        myNetwork?.removeServer()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        orderListDict = Dictionary()
         for myOrder in appDelegate.myOrderList{
             if myOrder.quantity > 0 {
                 haveToPay.append(myOrder)
                 totalPrice += (haveToPay.last?.quantity)! * (haveToPay.last?.price)!
+                orderListDict?["\((haveToPay.last?.product)!)"] = haveToPay.last?.quantity
             }
         }
+        print(orderListDict)
         totalPriceLabel.text = String(totalPrice)
         tableView.reloadData()
     }
@@ -44,7 +55,6 @@ class paymentTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         print(haveToPay.count)
         return haveToPay.count
     }

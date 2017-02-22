@@ -28,6 +28,8 @@
 		58C1A7D01E54382800B64413 /* paymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */; };
 		58C1A7E01E55A6BA00B64413 /* MyOrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1A7DF1E55A6BA00B64413 /* MyOrderList.swift */; };
 		58C1A7E21E55AA4600B64413 /* DbQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1A7E11E55AA4600B64413 /* DbQuery.swift */; };
+		58F61DCE1E5C21410021D4BA /* MyNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F61DCD1E5C21410021D4BA /* MyNetwork.swift */; };
+		58F61DD01E5C27480021D4BA /* GuestUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F61DCF1E5C27480021D4BA /* GuestUserNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		58C1A7CF1E54382800B64413 /* paymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = paymentTableViewCell.swift; sourceTree = "<group>"; };
 		58C1A7DF1E55A6BA00B64413 /* MyOrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderList.swift; sourceTree = "<group>"; };
 		58C1A7E11E55AA4600B64413 /* DbQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbQuery.swift; sourceTree = "<group>"; };
+		58F61DCD1E5C21410021D4BA /* MyNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNetwork.swift; sourceTree = "<group>"; };
+		58F61DCF1E5C27480021D4BA /* GuestUserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestUserNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 				586524381E51950F00E3E79C /* MenuTableViewController.swift */,
 				5865240A1E51872200E3E79C /* paymentTableViewController.swift */,
 				586524341E5192C200E3E79C /* CartTableViewController.swift */,
+				58F61DCF1E5C27480021D4BA /* GuestUserNameViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				5865242E1E518B4600E3E79C /* Menu.swift */,
 				58C1A7DF1E55A6BA00B64413 /* MyOrderList.swift */,
 				58C1A7E11E55AA4600B64413 /* DbQuery.swift */,
+				58F61DCD1E5C21410021D4BA /* MyNetwork.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +312,8 @@
 				586524311E518B4600E3E79C /* Menu.swift in Sources */,
 				58C1A7E01E55A6BA00B64413 /* MyOrderList.swift in Sources */,
 				5865240B1E51872200E3E79C /* paymentTableViewController.swift in Sources */,
+				58F61DCE1E5C21410021D4BA /* MyNetwork.swift in Sources */,
+				58F61DD01E5C27480021D4BA /* GuestUserNameViewController.swift in Sources */,
 				58252FE61E55FB890023F47B /* Socket.swift in Sources */,
 				58C1A7E21E55AA4600B64413 /* DbQuery.swift in Sources */,
 				586524351E5192C200E3E79C /* CartTableViewController.swift in Sources */,

@@ -22,7 +22,7 @@ class Socket: NSObject {
     var inputStream  : InputStream?
     var outputStream : OutputStream?
     var runloop      : RunLoop?
-    var status : Int = -1
+    var status       : Int = -1
     var timeout      : Float = 5.0;
     var portNumber: UInt16?
     weak var mStreamDelegate:StreamDelegate?

@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vRM-K0-uKT" id="qNR-aa-brx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4w-9B-yoT">
@@ -125,7 +125,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LYT-Fk-MfR" id="XF8-tQ-M1R">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="139"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMo-7f-RvJ">
@@ -272,11 +272,76 @@
                     <tabBarItem key="tabBarItem" title="Menu" id="Dtw-O2-UbB" userLabel="Menu"/>
                     <connections>
                         <outlet property="tableView" destination="wQz-Bh-yZ2" id="WG0-ip-Pho"/>
+                        <segue destination="Kmc-rf-vdN" kind="presentation" identifier="getUserName" modalPresentationStyle="overCurrentContext" id="lRL-E9-dg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5y-23-byN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="762.39999999999998" y="-524.8875562218891"/>
+        </scene>
+        <!--Get User Name View Controller-->
+        <scene sceneID="8ah-jv-TXJ">
+            <objects>
+                <viewController id="Kmc-rf-vdN" customClass="GetUserNameViewController" customModule="CouponBellClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <visualEffectView key="view" opaque="NO" contentMode="scaleToFill" id="B6g-di-Wku">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AoY-1H-zru">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGE-kJ-EuA">
+                                    <rect key="frame" x="20" y="266" width="335" height="135"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUi-ds-tcY">
+                                            <rect key="frame" x="8" y="40" width="319" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FI-tq-0Fy">
+                                            <rect key="frame" x="150" y="91" width="35" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <state key="normal" title="확인"/>
+                                            <connections>
+                                                <action selector="getUserNameBtn:" destination="Kmc-rf-vdN" eventType="touchUpInside" id="PMG-kU-8ui"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용할 닉네임을 입력하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lA-kB-a5r">
+                                            <rect key="frame" x="55" y="8" width="224" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="AUi-ds-tcY" firstAttribute="top" secondItem="1lA-kB-a5r" secondAttribute="bottom" constant="8" id="552-0k-XGI"/>
+                                        <constraint firstItem="9FI-tq-0Fy" firstAttribute="top" secondItem="AUi-ds-tcY" secondAttribute="bottom" constant="21" id="BHA-hJ-C8V"/>
+                                        <constraint firstItem="1lA-kB-a5r" firstAttribute="leading" secondItem="OGE-kJ-EuA" secondAttribute="leading" constant="55" id="Bb0-su-80F"/>
+                                        <constraint firstItem="9FI-tq-0Fy" firstAttribute="leading" secondItem="OGE-kJ-EuA" secondAttribute="leading" constant="150" id="GvH-gO-ui5"/>
+                                        <constraint firstItem="AUi-ds-tcY" firstAttribute="leading" secondItem="OGE-kJ-EuA" secondAttribute="leading" constant="8" id="Iej-eW-pmB"/>
+                                        <constraint firstAttribute="trailing" secondItem="AUi-ds-tcY" secondAttribute="trailing" constant="8" id="VW9-1J-wAF"/>
+                                        <constraint firstAttribute="height" constant="135" id="eSA-iv-A4M"/>
+                                        <constraint firstItem="1lA-kB-a5r" firstAttribute="top" secondItem="OGE-kJ-EuA" secondAttribute="top" constant="8" id="hh6-Cf-c2V"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="OGE-kJ-EuA" secondAttribute="trailing" constant="20" id="DO0-Sb-jst"/>
+                                <constraint firstAttribute="bottom" secondItem="OGE-kJ-EuA" secondAttribute="bottom" constant="266" id="peX-Al-JfU"/>
+                                <constraint firstItem="OGE-kJ-EuA" firstAttribute="leading" secondItem="AoY-1H-zru" secondAttribute="leading" constant="20" id="rEZ-gk-SG5"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <connections>
+                        <outlet property="getUserNameTextField" destination="AUi-ds-tcY" id="c0u-By-Yz0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KPf-2j-4Q4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1673" y="-161"/>
         </scene>
         <!--Payment Table View Controller-->
         <scene sceneID="yRQ-LW-kjS">
@@ -316,7 +381,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H3L-Lt-5xw" id="Sla-3h-BaN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제품 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esl-BY-GGM">
@@ -432,7 +497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Efy-R5-8MK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469.5999999999999" y="-525.78710644677665"/>
+            <point key="canvasLocation" x="1673" y="-837"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="q22-FS-e3a">

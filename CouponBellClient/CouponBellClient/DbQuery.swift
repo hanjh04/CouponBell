@@ -19,9 +19,7 @@ class DbQuery{
     func getAllMenu() -> Results<Menu>{
         return realm.objects(Menu.self)
     }
-    
-    
-    
+
     func addMenuList(type: String, product: String, price: Int){
         let menu = Menu()
         menu.price = price

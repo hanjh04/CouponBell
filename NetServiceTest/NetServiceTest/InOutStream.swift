@@ -22,4 +22,8 @@ struct InOutStream{
         socket = Socket()
         self.server = service
     }
+    mutating func setStreams(inputStream: InputStream, outputStream: OutputStream){
+        self.inputStream = inputStream
+        self.outputStream = outputStream
+    }
 }

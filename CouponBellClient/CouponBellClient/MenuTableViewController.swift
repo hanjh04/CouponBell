@@ -24,6 +24,8 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
     var tableNum = -1
     var allMenus: Results<Menu>?
     
+    var myNetwork: MyNetwork?
+    
     override func viewDidLoad(){
 ///////////////////////////////////////////////////////////////////////////////////////
 //        dbQuery.addMenuList(type: "Coffee", product: "Americano", price: 2000)     //
@@ -41,10 +43,19 @@ class MenuTableViewController: UIViewController, UITableViewDataSource, UITableV
         for menu in allMenus!{
             appDelegate.myOrderList.append(MyOrderList(type: menu.type, product: menu.product, price: menu.price))
         }
+        myNetwork = MyNetwork.sharedInstance()
+        //발행한 서비스가 존재하는지, 혹은 서비스가 중단되었는지 여부에 따라 조건문에 넣어서 확인.
+        myNetwork?.publishService()
+        myNetwork?.searchService()
+        
         tableView.reloadData()//전체 데이터 다 다시읽기
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "ClientName") == nil {
+            performSegue(withIdentifier: "getUserName", sender: nil)
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if allMenus == nil{
